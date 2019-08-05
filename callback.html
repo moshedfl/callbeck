@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <button onclick="go()">click</button>
+        <p id="r"></p>
+
+        <script>
+            function go(){
+                setTimeout(addHtml,3000);
+
+            }
+
+            function addHtml(){
+                    document.getElementById("r").innerHTML += "helo world";
+                }
+
+        </script>
+    </body>
+</html>

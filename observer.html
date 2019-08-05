@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <button onclick="go()">click</button>
+        <p id="r"></p>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.2/rxjs.umd.js" integrity="sha256-mNXCdYv896VtdKYTBWgurbyH+p9uDUgWE4sYjRnB5dM=" crossorigin="anonymous"></script>
+        <script>
+            function go(){
+                myPromise = startWork(1);
+            
+                myPromise.subscribe(function(msg){
+                document.getElementById("r").innerHTML += msg;
+            })
+            
+            
+            
+            }
+
+            
+            
+            function startWork(s){
+
+               const newPromise = rxjs.Observable.create (function(resolve){
+                    setTimeout(()=>{resolve.next("helo 1 <br>")},s*1000)
+                    setTimeout(()=>{resolve.next("helo 2 <br>")},s*2000)
+                    setTimeout(()=>{resolve.next("helo 3 <br>")},s*3000)
+
+                });
+            
+                return newPromise;
+            }
+
+        </script>
+    </body>
+</html>

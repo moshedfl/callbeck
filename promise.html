@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+    <head>
+
+    </head>
+    <body>
+        <button onclick="go()">click</button>
+        <p id="r"></p>
+
+        <script>
+            function go(){
+                myPromise = startWork(2);
+            
+                myPromise.then(function(msg){
+                document.getElementById("r").innerHTML += msg;
+            })
+            
+            
+            
+            }
+
+            
+            
+            function startWork(s){
+
+                newPromise = new Promise(function(resolve,regect){
+                    setTimeout(function(){
+                        resolve("helo helo");
+                    },s*1000)
+                })
+            
+                return newPromise;
+            }
+
+        </script>
+    </body>
+</html>
