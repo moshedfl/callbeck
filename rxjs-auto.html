@@ -7,12 +7,21 @@
     <title>Document</title>
 </head>
 <body>
-    <input type="text" oninput="autoComplit(event)"> 
+    <input id="rx"> 
 </body>
-
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/rxjs/6.5.2/rxjs.umd.js" integrity="sha256-mNXCdYv896VtdKYTBWgurbyH+p9uDUgWE4sYjRnB5dM=" crossorigin="anonymous"></script>
     <script>
-        function autoComplit(e){
-            console.log(e);
-        }
+        let rxop = rxjs.operators
+
+        let rxd = document.querySelector("#rx");
+        
+        let rxd1 = rxjs.fromEvent(rxd.querySelector("input"),"input").pipe(rxop.map(e => e.target.value));
+        //console.log(rxd1);
+
+        rxd1.pipe(
+            rxop.debounceTime(600),
+            rxop.distinctUntilChanged(),
+            rxop.switchMep(v => g)
+        )
     </script>
 </html>
